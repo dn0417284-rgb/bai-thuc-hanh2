@@ -11,7 +11,7 @@ export class AuthMiddleware implements NestMiddleware {
     this.use = this.use.bind(this);
   }
 
-  use(req: any, res: any, next: () => void) {
+  use(req: any, next: () => void) {
     const authHeader = req.headers['authorization'];
 
     if (!authHeader) {
@@ -22,9 +22,6 @@ export class AuthMiddleware implements NestMiddleware {
 
     try {
       const decoded = this.jwtService.verify(token);
-
-      console.log('Decoded payload:', decoded);
-
       req.user = decoded;
 
       next();

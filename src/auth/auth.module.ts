@@ -8,7 +8,6 @@ import { AuthMiddleware } from './auth.middleware.js';
 @Module({
   imports: [
     UsersModule,
-
     JwtModule.register({
       secret: 'secretKey123',
       signOptions: {
@@ -18,7 +17,6 @@ import { AuthMiddleware } from './auth.middleware.js';
   ],
 
   providers: [AuthService, AuthMiddleware],
-
   controllers: [AuthController],
 })
 export class AuthModule implements NestModule {
